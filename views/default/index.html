@@ -5,7 +5,7 @@
 <ul>
 {{for problem in problems:}}
 {{user = db(db.auth_user.id==problem.created_by).select().first()}}
-{{=LI(A(problem.title, _style="font-weight:bold;",_href=URL("Problem", args=problem.id)), " by " + user.first_name + " " + user.last_name + " ", SPAN(prettydate(problem.created_on), _style="color:green;font-weight:bold;"))}}
+{{=LI(A(problem.title, _style="font-weight:bold;",_href=URL("Problem", args=problem.id)), " (" + user.first_name + " " + user.last_name + ") ", SPAN(prettydate(problem.created_on), _style="color:green;font-weight:bold;"))}}
 {{pass}}
 
 

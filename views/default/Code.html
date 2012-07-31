@@ -18,23 +18,23 @@
 
 {{=H3(T("Comments"), " (" , db(db.comment.code_id == code.id).count() , ")" , _style="color:green")}}
 
-{{for comment in comments:}}
+{{for i,comment in enumerate(comments):}}
 {{user = db(db.auth_user.id==comment.created_by).select().first()}}
-<div class="statusbar">
+<div style="align: center; border: 1em dotted #fff;" class="hero-unit">
 	<p>{{=B(shortify(user))}} {{=prettydate(comment.created_on)}}</p>
 	{{=comment.body}}
 </div>
 {{pass}}
 
-
-{{=H2(T("Post your comment!"))}}
+<div style="align: center;">
+{{=H2(T("Post your comment!"), _style="color: green")}}
 {{=form.custom.begin}}
-<div class="comment">
-{{=form.custom.widget.body}}
 <div>
-<input type="submit" value={{=T("Submit")}}>
+{{=form.custom.widget.body}}
+</div>
+<input type="submit" class="btn btn-primary btn-large" value={{=T("Submit")}}>
 {{=form.custom.end}}
-
+</div>
 
 
 
