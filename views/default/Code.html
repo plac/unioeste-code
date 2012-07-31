@@ -1,0 +1,49 @@
+ {{extend 'layout.html'}}
+
+ <head>
+ <script src="../../static/lib/codemirror.js"></script>
+ <link rel="stylesheet" href="../../static/lib/codemirror.css">
+ <script src="../../static/mode/clike.js"></script>
+ <style>.CodeMirror {border: 3px solid #cccccc;}</style>
+</head>
+
+
+{{from uc_utils import shortify}}
+
+{{=H4(T("Solution by "))}}
+{{=H3(shortify(author) + " " +  prettydate(code.created_on))}}
+<textarea id="code_body">
+{{=code.body}}
+</textarea>
+
+{{=H3(T("Comments"), " (" , db(db.comment.code_id == code.id).count() , ")" , _style="color:green")}}
+
+{{for comment in comments:}}
+{{user = db(db.auth_user.id==comment.created_by).select().first()}}
+<div class="statusbar">
+	<p>{{=B(shortify(user))}} {{=prettydate(comment.created_on)}}</p>
+	{{=comment.body}}
+</div>
+{{pass}}
+
+
+{{=H2(T("Post your comment!"))}}
+{{=form.custom.begin}}
+<div class="comment">
+{{=form.custom.widget.body}}
+<div>
+<input type="submit" value={{=T("Submit")}}>
+{{=form.custom.end}}
+
+
+
+
+<script type="text/javascript">
+      var editor = CodeMirror.fromTextArea(document.getElementById("code_body"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-c++src",
+        readOnly: true
+      });
+</script>
+

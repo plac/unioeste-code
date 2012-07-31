@@ -1,0 +1,62 @@
+ {{extend 'layout.html'}}
+
+
+ <head>
+ <script src="../../static/lib/codemirror.js"></script>
+ <link rel="stylesheet" href="../../static/lib/codemirror.css">
+ <script src="../../static/mode/clike.js"></script>
+ <style>.CodeMirror {border: 3px solid #cccccc;}</style>
+
+
+    <style type="text/css">
+      .CodeMirror-fullscreen {
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        z-index: 9999;
+      }
+    </style>
+
+</head>
+
+
+{{from uc_utils import shortify}}
+
+{{=H1(problem.title)}}
+
+<div class="statusbar">
+{{=problem.body}}	
+</div>
+
+{{=H2("Códigos postados", _style="color:green")}}
+<ul>
+{{for code in codes:}}
+{{user = db(db.auth_user.id==code.created_by).select().first()}}
+
+<LI>
+{{=A(B(shortify(user)), _href=URL("Code", args=code.id))}}
+{{=prettydate(code.created_on)}}
+</LI>
+{{pass}}
+</ul>
+
+{{=H2(T("Post your code!"))}}
+{{=form.custom.begin}}
+<div>
+{{=form.custom.widget.body}}
+</div>
+
+<script type="text/javascript">
+      var editor = CodeMirror.fromTextArea(document.getElementById("code_body"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-c++src"
+      });
+</script>
+ <p>Press <strong>F11</strong> when cursor is in the editor to toggle full screen editing. <strong>Esc</strong> can also be used to <i>exit</i> full screen editing.</p>
+<input type="submit" value={{=T("Submit")}}>
+{{=form.custom.end}}
+
+
+
