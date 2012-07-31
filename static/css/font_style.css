@@ -1,0 +1,17 @@
+/*!
+ * Font para o site.
+ */
+
+@font-face {
+  font-family: "Visitor";
+  src: url("../font/visitor1.ttf") format("truetype");
+}
+
+.brand{
+	font-family: "Visitor" sans-serif;
+	font-size: 200%;
+}
+
+h1, h2, h3 {
+  font-family: "Visitor", sans-serif;
+}

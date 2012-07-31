@@ -1,4 +1,4 @@
-{{extend 'layout.html'}}
+{{extend 'layout_finale.html'}}
 
 
 {{=H1(T("Current Problems"))}}
@@ -7,10 +7,6 @@
 {{user = db(db.auth_user.id==problem.created_by).select().first()}}
 {{=LI(A(problem.title, _style="font-weight:bold;",_href=URL("Problem", args=problem.id)), " by " + user.first_name + " " + user.last_name + " ", SPAN(prettydate(problem.created_on), _style="color:green;font-weight:bold;"))}}
 {{pass}}
-
-
-{{from pyGravatar import Gravatar}}
-{{IMG(_src=Gravatar(auth.user.email).thumb())}}
 
 
 </ul>
