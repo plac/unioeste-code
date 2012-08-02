@@ -14,7 +14,7 @@
 
 .uc_topbar{
 	font-family: "Visitor" sans-serif;
-	font-size: 120%;
+	font-size: 140%;
 }
 
 h1, h2, h3 {
@@ -22,6 +22,9 @@ h1, h2, h3 {
 }
 
 body {
-	font-family: "Visitor", sans-serif;
-	font-size: 120%;
+	font-family: 'lucida grande', lucida, tahoma, helvetica, arial, sans-serif;
+}
+
+.hero-unit {
+	font-size: 150%;
 }

@@ -25,21 +25,30 @@
 
 {{=H1(problem.title)}}
 
-<div class="statusbar">
+<div class="hero-unit" style="border: 1em dotted #fff">
 {{=problem.body}}	
 </div>
 
 {{=H2("Códigos postados", _style="color:green")}}
-<ul>
+<div>
+<ul class="nav nav-list">
 {{for code in codes:}}
 {{user = db(db.auth_user.id==code.created_by).select().first()}}
 
-<LI>
-{{=A(B(shortify(user)), _href=URL("Code", args=code.id))}}
-{{=prettydate(code.created_on)}}
-</LI>
+<li>
+      
+  <div>
+  <i class="icon-flag">
+  
+  </i>
+       {{=A(B(shortify(user)),_href=URL("Code", args=code.id))}}
+       {{=SPAN(prettydate(code.created_on),_style="font-size: 80%")}}
+</div>
+</li>
+
 {{pass}}
 </ul>
+</div>
 
 {{=H2(T("Post your code!"))}}
 {{=form.custom.begin}}
@@ -54,8 +63,8 @@
         mode: "text/x-c++src"
       });
 </script>
- <p>Press <strong>F11</strong> when cursor is in the editor to toggle full screen editing. <strong>Esc</strong> can also be used to <i>exit</i> full screen editing.</p>
-<input type="submit" class="btn btn-primary btn-large" value={{=T("Submit")}}>
+ <p style="float: center;">Press <strong>F11</strong> when cursor is in the editor to toggle full screen editing. <strong>Esc</strong> can also be used to <i>exit</i> full screen editing.</p>
+<input type="submit" class="btn btn-primary btn-large pull-right" value={{=T("Submit")}}>
 {{=form.custom.end}}
 
 

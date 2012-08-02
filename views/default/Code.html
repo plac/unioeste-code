@@ -10,8 +10,8 @@
 
 {{from uc_utils import shortify}}
 
-{{=H4(T("Solution by "))}}
-{{=H3(shortify(author) + " " +  prettydate(code.created_on))}}
+{{=H3(T("Solution by "))}}
+{{=SPAN(shortify(author) + " " +  prettydate(code.created_on))}}
 <textarea id="code_body">
 {{=code.body}}
 </textarea>
@@ -29,10 +29,11 @@
 <div style="align: center;">
 {{=H2(T("Post your comment!"), _style="color: green")}}
 {{=form.custom.begin}}
-<div>
-{{=form.custom.widget.body}}
+<div >
+<textarea id="comment_body" class="input-xlarge" style="margin: 0px; width: 100%; height: 100px;" ></textarea>
 </div>
-<input type="submit" class="btn btn-primary btn-large" value={{=T("Submit")}}>
+<br/>
+<input type="submit" class="btn btn-primary btn-large pull-right" value={{=T("Submit")}}>
 {{=form.custom.end}}
 </div>
 
