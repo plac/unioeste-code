@@ -11,7 +11,8 @@
 
 def index():
     problems = db().select(db.problem.ALL, orderby = db.problem.title)
-    return dict(problems=problems)
+    form = SQLFORM(db.problem)
+    return dict(problems=problems,form=form)
 
 @auth.requires_login()
 def Problem():

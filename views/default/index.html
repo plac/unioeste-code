@@ -4,7 +4,7 @@
 {{=H1(T("Current Problems"))}}
 
 <br/>
-
+<div class="well span8">
 {{for problem in problems:}}
 {{user = db(db.auth_user.id==problem.created_by).select().first()}}
 
@@ -12,8 +12,17 @@
 {{=A(problem.title, _style="font-weight:bold;",_href=URL("Problem", args=problem.id))}}
 {{= B(" [" + user.first_name + " " + user.last_name + "] ")}}
 {{=SPAN(prettydate(problem.created_on), _style="font-size: 80%" )}}
+{{codes = db(db.code.problem_id == problem.id).select()}}
+{{for code in codes:}}
+<li style="padding: 0px 10px ; list-style-type: none;">
+	{{codeuser = db(db.auth_user.id == code.created_by).select().first()}}
+	{{=B(" [" + codeuser.first_name + " " + codeuser.last_name + "] ")}}
+	{{=SPAN(prettydate(problem.created_on), _style="font-size: 80%" )}}
+</li>
+{{pass}}
 </ul>
 {{pass}}
+</div>
 
 
 

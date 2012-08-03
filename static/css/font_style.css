@@ -27,4 +27,41 @@ body {
 
 .hero-unit {
 	font-size: 150%;
+	align: center; 
+	border: .5em dotted #fff;
 }
+
+.auth_navbar {
+	font-family: "Visitor" sans-serif;
+	font-size: 140%;
+}
+
+.nav > li > span > a:link 
+{
+  text-decoration: none;
+  color: #999;
+} 
+
+.nav > li { margin-top: 8px;}
+
+.nav > li > span > a:hover 
+{
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav > li > span > a:visited 
+{
+  text-decoration: none;
+  color: #999;
+}
+
+.well {
+	margin-left: -8px;
+}
+
+a:hover 
+{
+	text-decoration: none;	
+}
+
