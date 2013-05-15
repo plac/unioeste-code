@@ -17,11 +17,11 @@ Através do site é possível:
 
 * Adicionar problemas;
 * Adicionar soluções para um problema;
-* Votação de melhor solução <+1>;
+* Votação de melhor solução `+1`;
 * Vizualização de ranking de soluções por problema.
 
 Melhorias
 ==============
 
 * Integração com servidor BOCA;
-* Adição de novas funcionalidades.
+* Integração com facebook.
